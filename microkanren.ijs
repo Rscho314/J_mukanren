@@ -21,47 +21,35 @@ NB. (define mzero '())
 mzero =: <''
 NB. (define (unit s/c) (cons s/c mzero))
 unit =: 3 : 'y&, &.> mzero'
-(0 : 0)
-  notes on unification:
-  ---------------------
-  - for now, let's make it simple by using boxed args
-  - to avoid the argument boxing problem, make a closure
-  - make a conjunction (dyadic function that returns a monadic verb)
-  - then, pass the state to the created verb
-)
 
-unify =: 3 : 0
-  a       =.(0&{:: walk 2&{::) y
-  b       =.(1&{:: walk 2&{::) y
-  c       =. 2&{::             y
-  
-  pairhuh =. 2&=@#
-  
+unify =: 2 : 0
+  a       =. u walk y
+  b       =. v walk y
+  pairhuh =. ''-.@-:}. NB. i.e, cdr is not null
   d       =. a vareqhuh b
-  e       =. 1 &= varhuh a
-  f       =. 1 &= varhuh b
+  e       =. varhuh a
+  f       =. varhuh b
   g       =. (pairhuh a) *. (pairhuh b)
   h       =. a -: b
-  
-  i       =. c&[
-  j       =. exts a ; b ; 2&{y
-  k       =. exts b ; a ; 2&{y
-  l       =. unify ({.a) ; ({.b) ; ] unify (}.a) ; (}.b) ; 2&{y
-  m       =. mzero&[
+  i       =. y"_
+  j       =. exts a ; b ; y
+  k       =. exts b ; a ; y
+  l       =. ({.a) unify ({.b) ] (}.a) unify (}.b)
+  m       =. mzero"_
+  i j k l i m`@. ] 1 i.~ d,e,f,g,h
+:
+  'ERROR: ''unify'' was invoked as a dyad.'
+)
 
-  i j k l i m`@. ] 1 i.~ d , e , f , g , h
+NB. CONTINUE HERE!
+equivalent =: 2 : 0
+ @.''-:u unify v{.
 )
-NB. call/fresh takes a function (= adverb) and yields a monadic verb
-NB. this makes callfresh postfix!
-NB. https://code.jsoftware.com/wiki/Guides/Lexical_Closure
+
+NB. here var is boxed int. Make boxed vec int?
+NB. callfresh postfix!
 NB. state and counter are passed as a boxed vector
-callfresh =: 1 : 0 NB. coreset'' will have to be used somewhere!
-  NB.loc =. cocreate''
-  lft =. m
-  (lft~) y
-  
-  NB.(3 : '(lft var >{:y) ({.y) , (>: &.> }.y)')
-)
+callfresh =: 1 : ''''';~((>&}.;u&.>@}.);(>:&.>@}.))'
 
 NB. this uses a thunk, so it seems it must be a conjunction 
 mplus =: 2 : 0
