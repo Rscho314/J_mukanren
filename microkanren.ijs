@@ -11,29 +11,33 @@ exts =: 2 : '(u ; v);]'
 mzero =: <''
 unit =: mzero,~]
 
+NB. CONTINUE HERE!
 unify =: 2 : 0
-  pairhuh =. ''-.@-:}. NB. i.e, cdr is not null
-  d       =. u&walk vareqhuh v&walk
-  e       =. varhuh@u&walk
-  f       =. varhuh@v&walk
-  g       =. pairhuh@u&walk *. pairhuh@v&walk
-  h       =. u&walk -: v&walk NB. probably WRONG!
-  i       =. ]
-  j       =. u&walk exts v&walk
-  k       =. v&walk exts u&walk
-  l       =. {.@u&walk unify {.@v&walk ] }.@u&walk unify }.@v&walk
-  m       =. mzero"_
-
-  i`j`k`l`m @.d`e`f`g`h`:0
+  NB.pairhuh =. ''-.@-:}. NB. i.e, cdr is not null
+  NB.d       =. u&walk vareqhuh v&walk
+  NB.e       =. varhuh@u&walk
+  NB.f       =. varhuh@v&walk
+  NB.g       =. pairhuh@u&walk *. pairhuh@v&walk
+  NB.h       =. u&walk -: v&walk NB. probably WRONG!
+  NB.i       =. ]
+  NB.j       =. u&walk exts v&walk
+  NB.k       =. v&walk exts u&walk
+  NB. REDO l       =. {.u walk@] unify ({.v walk y) o[o=.(}.u walk y) unify (}.v walk y)'
+  NB.m       =. mzero"_
+  NB.i`j`k`l`m @.(d`e`f`g`h`:0) ]
+  (u&walk vareqhuh v&walk)`:0 @ ]
 )
+3 unify 5 empty_state
 
-
-equivalent =: 2 : 'unit@((u unify v {.) ; }.) `mzero"_ @. (''''-:u unify v {.)'
+equivalent =: 2 : 'u unify v y'
+NB.equivalent =: 2 : 'unit@((u unify v {.) ; }.) `mzero"_ @. (''''-:u unify v {.)'
 
 NB. here var is boxed int. Make boxed vec int?
 NB. callfresh postfix!
 NB. state and counter are passed as a boxed vector
-callfresh =: 1 : ''''';~((>&}.;u&.>@}.);(>:&.>@}.))'
+callfresh =: 1 : '(u@var@>@}.@]) ({.@],>:&.>@}.)'
+NB.callfresh =: 1 : ''''';~((>&}.;u&.>@}.);(>:&.>@}.))'
+
 NB. this uses a thunk, so it seems it must be a conjunction 
 mplus =: 2 : 0
   lft =. x
