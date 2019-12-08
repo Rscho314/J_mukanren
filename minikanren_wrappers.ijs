@@ -1,1 +1,1 @@
-empty_state =: '' ; 0
+empty_state =: '';0 NB. this is in fact s/c
