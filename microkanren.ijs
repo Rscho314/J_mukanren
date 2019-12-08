@@ -11,12 +11,5 @@ exts =: 2 : 'y;~;/u`v`:0 y'
 mzero =: <''
 unit =: mzero,~]
 unify =: 2 : ']`((u&walk) exts (v&walk))`((v&walk) exts (u&walk))`((}.u&walk ss) $: (}.v&walk ss) ss[ss=.({.u&walk s) $: ({.v&walk s) s[s=.])`]`(mzero"_) @. (1 i.~ (u&walk vareqhuh v&walk)`(varhuh@(u&walk))`(varhuh@(v&walk))`((''''&-:@}.@(u&walk)) *: (''''&-:@}.@(v&walk)))`(u&walk -: v&walk)`:0)'
-equivalent =: 2 : '(unit ((u unify v {.),}.))`(mzero"_) @. (mzero -: u unify v {.)'
-equivalent =: 2 :0
- NB.(unit ((u unify v {.);}.))`(mzero"_) @. (mzero -: u unify v))
-(((unit u unify v {.y);}.y)"_)`(mzero"_) @. ] mzero-:u unify v {. y
-:
-  'ERROR: monad invoked as dyad.'
-)
 equivalent =: 2 : '(((unit u unify v {.y);}.y)"_)`(mzero"_) @. ] mzero-:u unify v {. y'
 callfresh =: 1 : '(u@var@>@}.@]) ({.@],>:&.>@}.)'

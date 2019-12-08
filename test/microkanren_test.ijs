@@ -41,6 +41,7 @@ test_equivalent =: 3 :0
 )
 
 test_second_set_t1 =: 3 :0
-  smoutput (5"_ exts (8"_)) ] (3"_ exts (4"_)) <''
+  NB. how to make equivalent & callfresh work together??
+  smoutput 5 equivalent callfresh empty_state
   NB.assert. ({.'';~1;~5;~1$0) -: {. 5&equivalent callfresh empty_state
 )
