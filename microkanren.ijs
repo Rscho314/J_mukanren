@@ -1,31 +1,23 @@
 NB. https://github.com/jasonhemann/microKanren
 NB. TODO: for now, namespace is flat (helper functions at top level)
 fail =: 3 : 'assert. 0:y'
-integerhuh =: 3 : '(0&=@#@$ *. (1 4 e.~ (3!:0))) y'
+integerhuh =: (0 = 1&|) *. (0 = {:@+.)
 boxhuh =: 3 : '32&=@(3!:0) y'
 var =: fail`] @. integerhuh
 varhuh =: integerhuh
 vareqhuh =: 4 : '*./ (x -: y) , (varhuh x) , (varhuh y)'
 walk =: [`(>@(>:@(>@{.@] i.[){])walk]) @. (e.>@{.)
-exts =: 2 : '(u ; v);]'
+exts =: 2 : '(u ; v);]' NB. probably wrong!
 mzero =: <''
 unit =: mzero,~]
 
-NB. CONTINUE HERE!
-unify =: 2 : 0
-  NB.pairhuh =. ''-.@-:}. NB. i.e, cdr is not null
-  NB.d       =. u&walk vareqhuh v&walk
-  NB.e       =. varhuh@u&walk
-  NB.f       =. varhuh@v&walk
-  NB.g       =. pairhuh@u&walk *. pairhuh@v&walk
-  NB.h       =. u&walk -: v&walk NB. probably WRONG!
-  NB.i       =. ]
-  NB.j       =. u&walk exts v&walk
-  NB.k       =. v&walk exts u&walk
-  NB. REDO l       =. {.u walk@] unify ({.v walk y) o[o=.(}.u walk y) unify (}.v walk y)'
-  NB.m       =. mzero"_
-  NB.i`j`k`l`m @.(d`e`f`g`h`:0) ]
-  (u&walk vareqhuh v&walk)`:0 @ ]
+unify =: 2 :0
+NB. written that way bc impossible to assign
+NB. probably an interpreter bug
+NB. PROBLEM: infinite loop!
+NB. REDO {.u walk@] unify ({.v walk y) o[o=.(}.u walk y) unify (}.v walk y)'
+
+]`((u&walk) exts (v&walk))`((v&walk) exts (u&walk))`((}.@u&walk) unify (}.@v&walk))`(mzero"_) @. (1 i.~ (u&walk vareqhuh v&walk)`(varhuh@(u&walk))`(varhuh@(v&walk))`((''&-:@}.@(u&walk)) *: (''&-:@}.@(v&walk)))`(u&walk -: v&walk)`:0)
 )
 3 unify 5 empty_state
 
