@@ -1,1 +1,1 @@
-writesourcex_jp_ '~mukanren';'~mukanren/release/mukanren.ijs'
+writesourcex_jp_ '~Projects/J_mukanren';'~Projects/J_mukanren/release/mukanren.ijs'

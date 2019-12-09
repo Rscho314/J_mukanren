@@ -1,7 +1,7 @@
 NB. microKanren-test.scm
 
 before_all=: 3 : 0
-  load jpath'~mukanren/release/mukanren.ijs'
+  load jpath'~Projects/J_mukanren/release/mukanren.ijs'
 )
 
 test_integerhuh =: 3 :0
@@ -40,8 +40,19 @@ test_equivalent =: 3 :0
   assert. (0;~(3;5);'';'') -: 3 equivalent 5 ('';0)
 )
 
+NB. Are we missing an op on empty_state?
+NB. Otherwise, why needed to give 0 to equivalent??
 test_second_set_t1 =: 3 :0
-  NB. how to make equivalent & callfresh work together??
-  smoutput 5 equivalent callfresh empty_state
-  NB.assert. ({.'';~1;~5;~1$0) -: {. 5&equivalent callfresh empty_state
+  NB. correct result, WRONG USE!!
+  ({.'';~1;~5;~1$0) -: {. (3 : 'y equivalent 5 callfresh empty_state') 0
+)
+
+test_second_set_t2 =: 3 :0
+  NB. correct result, WRONG USE!!
+  ({.'';~1;~5;~1$0) -: {. empty_state (1 : '({:>}.u) equivalent 5 callfresh u')
+)
+
+test_second_set_t3 =: 3 :0
+  NB. correct result, WRONG USE!!
+smoutput empty_state (2 : '({:>}.u) equivalent y v u') callfresh 5
 )
