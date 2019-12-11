@@ -47,12 +47,20 @@ test_second_set_t1 =: 3 :0
   ({.'';~1;~5;~1$0) -: {. (3 : 'y equivalent 5 callfresh empty_state') 0
 )
 
-test_second_set_t2 =: 3 :0
+test_second_set_t1a =: 3 :0
   NB. correct result, WRONG USE!!
   ({.'';~1;~5;~1$0) -: {. empty_state (1 : '({:>}.u) equivalent 5 callfresh u')
 )
 
-test_second_set_t3 =: 3 :0
+test_second_set_t1b =: 3 :0
   NB. correct result, WRONG USE!!
-smoutput empty_state (2 : '({:>}.u) equivalent y v u') callfresh 5
+  ({.'';~1;~5;~1$0) -: {. callfresh (2 : '({:>}.v) equivalent v u y') 5 empty_state
+)
+
+test_second_set_t2 =: 3 :0
+  (<'') -: }. ] callfresh (2 : '({:>}.v) equivalent v u y') 5 empty_state
+)
+
+test_second_set_t3 =: 3 :0
+  (<'') -: }. ] callfresh (2 : '({:>}.v) equivalent v u y') 5 empty_state
 )
