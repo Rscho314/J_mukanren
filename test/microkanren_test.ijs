@@ -37,20 +37,13 @@ test_unify =: 3 :0
 )
 
 test_equivalent =: 3 :0
-  assert. (0;~(3;5);'';'') -: 3 equivalent 5 ('';0)
+  smoutput 3 equivalent 5 empty_state
+  NB.assert. (0;~(3;5);'';'') -: 3 equivalent 5 empty_state
 )
 
 NB. Are we missing an op on empty_state?
 NB. Otherwise, why needed to give 0 to equivalent??
 test_second_set_t1 =: 3 :0
-  NB. correct result, WRONG USE!!
-  assert. ({.'';~1;~5;~1$0)-:{.] callfresh (2 : '({:>}.v) equivalent v u y') 5 empty_state
-)
-
-test_second_set_t2 =: 3 :0
-  assert. (<'') -: }. ] callfresh (2 : '({:>}.v) equivalent v u y') 5 empty_state
-)
-
-test_second_set_t3 =: 3 :0
-  assert. (<'') -: }. ] callfresh (2 : '({:>}.v) equivalent v u y') 5 empty_state
+  NB.smoutput {.'';~1;~5;~1$0
+  smoutput (2 : '5 equivalent 0 v y') callfresh empty_state
 )
