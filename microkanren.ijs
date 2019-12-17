@@ -11,12 +11,9 @@ exts =: 2 : '(u;v);]'
 mzero =: <''
 unit =: mzero;~]
 unify =: 2 : ']`((u&walk) exts (v&walk))`((v&walk) exts (u&walk))`(}.@u&walk $: }.@v&walk ] {.@u&walk $: {.@v&walk)`]`(''''"_)@.(1 i.~ (u&walk vareqhuh v&walk)`([: varhuh u&walk)`([: varhuh v&walk)`(''''&-:&}.@(u&walk) *: ''''&-:&}.@(v&walk))`(u&walk -: v&walk)`:0)'
-equivalent =: 2 : '(unit u unify v @{.;}.)`(mzero"_)@.(''''&-: @ (u unify v) @ {.)'
-NB. CONTINUE HERE, MAKE equivalent and callfresh PLAY WELL!
-callfresh =: 1 : '(u@var@>@}.)({.@];>:&.>@}.)'
-5 (2 : 'u equivalent v') (1$0) ('';0) NB. ALMOST!
-5 (2 : 'u equivalent (1$>}.v) ({.@];>:&.>@}.v)') ('';0) NB. RIGHT!
-5 (2 : 'u equivalent v') callfresh ('';0) NB. WRONG!
+NB. calling constraints w 2 literals as in scheme no more permitted (useless?)
+equivalent =: 2 : '(unit (}.}.v);~ u unify (0&{::v) {.}.v)"_`(mzero"_)@.('''' -: u unify (0&{::v) {.}.v) '''''
+callfresh =: (var&.>@}.) , ({.,>:&.>@}.)
 
 mplus =: 2 :0
   (v"_)`((v $: u'')"_)`((({.u),((}.u) $: v))"_)@.(1 i.~(-:~<'')`(0-.@-:(3!:0))`:0) u
